@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clínica Rimcha — Estética Integrativa e Endocrinologia | Jardim São Paulo</title>
+<meta name="description" content="Estética integrativa e endocrinologia no Jardim São Paulo. Cuidamos da sua pele e do seu equilíbrio hormonal juntos — resultado que vem de dentro para fora." />
+<meta name="theme-color" content="#211D1A" />
+
+<meta property="og:title" content="Clínica Rimcha — Estética Integrativa e Endocrinologia" />
+<meta property="og:description" content="Pele e equilíbrio hormonal cuidados juntos, no Jardim São Paulo." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --ivory:#F7F3EC;
+  --cream:#EFE7DA;
+  --sand:#E3D7C4;
+  --sand-line:#DED0BB;
+  --espresso:#211D1A;
+  --espresso-2:#2A2521;
+  --ink:#241F1B;
+  --ink-soft:#6A5F55;
+  --ink-mute:#8A7E72;
+  --gold:#B8863B;
+  --gold-deep:#9A6E2C;
+  --gold-bright:#D8B063;
+  --gold-soft:#E7CD97;
+  --sage:#7C8567;
+  --sage-deep:#5C6350;
+
+  --maxw:1120px;
+  --r:18px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:400;line-height:1.08;letter-spacing:-.01em;margin:0}
+p{margin:0}
+::selection{background:var(--gold-soft);color:var(--espresso)}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+.eyebrow{
+  font-family:"Manrope";font-size:.72rem;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);
+  display:inline-flex;align-items:center;gap:.6em;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);display:inline-block;opacity:.7}
+.eyebrow.center::before{display:none}
+
+.btn{
+  --bg:var(--gold);--fg:#2A2012;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+  padding:15px 26px;border-radius:100px;font-weight:700;font-size:.95rem;letter-spacing:.01em;
+  background:var(--bg);color:var(--fg);border:1px solid transparent;cursor:pointer;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;
+  box-shadow:0 10px 24px -12px rgba(154,110,44,.7);
+  will-change:transform;
+}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+.btn:hover{box-shadow:0 16px 34px -12px rgba(154,110,44,.85)}
+.btn.ghost{
+  --bg:transparent;--fg:var(--ivory);
+  border-color:rgba(231,205,151,.4);box-shadow:none;
+}
+.btn.ghost:hover{background:rgba(231,205,151,.1)}
+.btn.dark{--bg:var(--espresso);--fg:var(--ivory);box-shadow:0 12px 26px -14px rgba(33,29,26,.8)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);
+  padding:16px 0;
+}
+.nav.scrolled{
+  background:rgba(247,243,236,.86);backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--sand-line);padding:10px 0;
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{height:46px;width:auto;transition:opacity .3s}
+.brand .logo-g{display:none}
+.nav.scrolled .brand .logo-w{display:none}
+.nav.scrolled .brand .logo-g{display:block}
+.nav.scrolled .brand img{height:40px}
+
+.nav-links{display:none}
+.nav-cta{display:none}
+
+.burger{
+  width:44px;height:44px;border:1px solid rgba(231,205,151,.35);border-radius:12px;background:transparent;
+  display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;
+  transition:border-color .3s;
+}
+.nav.scrolled .burger{border-color:var(--sand-line)}
+.burger span{width:20px;height:2px;background:var(--ivory);border-radius:2px;transition:.3s var(--ease)}
+.nav.scrolled .burger span{background:var(--ink)}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.drawer{
+  position:fixed;inset:0;z-index:55;background:var(--espresso);
+  display:flex;flex-direction:column;justify-content:center;padding:0 30px;
+  clip-path:circle(0% at calc(100% - 44px) 40px);
+  transition:clip-path .55s var(--ease);pointer-events:none;
+}
+.drawer.open{clip-path:circle(150% at calc(100% - 44px) 40px);pointer-events:auto}
+.drawer a{
+  font-family:"Fraunces";font-size:2rem;color:var(--ivory);padding:12px 0;
+  border-bottom:1px solid rgba(231,205,151,.12);display:flex;align-items:center;gap:.5em;
+  opacity:0;transform:translateY(14px);transition:.5s var(--ease);
+}
+.drawer.open a{opacity:1;transform:none}
+.drawer.open a:nth-child(1){transition-delay:.12s}
+.drawer.open a:nth-child(2){transition-delay:.18s}
+.drawer.open a:nth-child(3){transition-delay:.24s}
+.drawer.open a:nth-child(4){transition-delay:.30s}
+.drawer.open a:nth-child(5){transition-delay:.36s}
+.drawer a span{font-family:"Manrope";font-size:.8rem;color:var(--gold-bright);font-weight:700}
+.drawer .drawer-cta{margin-top:26px;border:none}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100svh;background:var(--espresso);color:var(--ivory);
+  display:flex;align-items:center;overflow:hidden;padding:120px 0 70px;
+}
+.beams{position:absolute;inset:-20% -10%;pointer-events:none;mix-blend-mode:screen;opacity:.9}
+.beam{
+  position:absolute;top:-30%;height:160%;width:34vw;max-width:520px;
+  background:linear-gradient(180deg,transparent,rgba(216,176,99,.5),transparent);
+  filter:blur(38px);transform:rotate(16deg);animation:drift 17s ease-in-out infinite;
+}
+.beam.b1{left:-8%;background:linear-gradient(180deg,transparent,rgba(216,176,99,.55),transparent);animation-delay:-2s}
+.beam.b2{left:34%;width:26vw;background:linear-gradient(180deg,transparent,rgba(231,205,151,.4),transparent);animation-delay:-7s;animation-duration:21s}
+.beam.b3{left:70%;background:linear-gradient(180deg,transparent,rgba(124,133,103,.32),transparent);animation-delay:-11s;animation-duration:24s}
+@keyframes drift{
+  0%,100%{transform:rotate(16deg) translateX(0) translateY(0)}
+  50%{transform:rotate(12deg) translateX(-30px) translateY(24px)}
+}
+.hero::after{ /* grain + vignette */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 70% 20%,transparent 40%,rgba(0,0,0,.45) 100%);
+}
+.hero-inner{position:relative;z-index:2;width:100%}
+.hero-logo{height:clamp(140px,32vw,210px);width:auto;margin-bottom:32px;opacity:0;
+  filter:drop-shadow(0 10px 34px rgba(0,0,0,.45));animation:rise .9s var(--ease) .1s forwards}
+.hero h1{
+  font-size:clamp(2.6rem,10.5vw,4.6rem);font-weight:300;letter-spacing:-.02em;
+  max-width:16ch;
+}
+.hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:400}
+.hero .lede{
+  margin-top:22px;max-width:40ch;color:#E9E0D2;font-size:1.06rem;line-height:1.6;
+}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.chip{
+  display:inline-flex;align-items:center;gap:.5em;margin-bottom:26px;
+  padding:7px 15px;border:1px solid rgba(231,205,151,.28);border-radius:100px;
+  font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--gold-soft);
+  background:rgba(231,205,151,.06);
+}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 3px rgba(216,176,99,.25)}
+
+/* hero entrance stagger */
+.hero .an{opacity:0;animation:rise .9s var(--ease) forwards}
+.hero .chip.an{animation-delay:.25s}
+.hero h1.an{animation-delay:.38s}
+.hero .lede.an{animation-delay:.52s}
+.hero .actions.an{animation-delay:.66s}
+.scrollcue{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:7px;opacity:0;animation:rise 1s var(--ease) 1s forwards;
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(231,205,151,.6)
+}
+.scrollcue .line{width:1px;height:34px;background:linear-gradient(var(--gold-bright),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ---------- SECTION SYSTEM ---------- */
+.section{padding:76px 0}
+.section-head{max-width:60ch}
+.section-head h2{font-size:clamp(2rem,7vw,3.1rem);margin-top:14px;font-weight:400}
+.section-head h2 em{font-style:italic;color:var(--gold-deep)}
+.section-head p{margin-top:16px;color:var(--ink-soft);font-size:1.05rem}
+.center{text-align:center}
+.center .section-head{margin:0 auto}
+.center .eyebrow{justify-content:center}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ---------- APPROACH ---------- */
+.approach{background:var(--ivory)}
+.split{display:grid;gap:16px;margin-top:38px}
+.card-approach{
+  position:relative;border-radius:var(--r);padding:30px 26px;overflow:hidden;
+  border:1px solid var(--sand-line);
+}
+.card-approach.dentro{background:linear-gradient(160deg,#20251C,#2C3326);color:var(--ivory);border-color:transparent}
+.card-approach.fora{background:linear-gradient(160deg,#FBF8F2,#F0E7D6)}
+.card-approach .tag{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.card-approach.dentro .tag{color:var(--sage)}
+.card-approach.fora .tag{color:var(--gold-deep)}
+.card-approach h3{font-size:1.65rem;margin:12px 0 10px}
+.card-approach.dentro h3{color:#F3EFE6}
+.card-approach p{font-size:.98rem;color:var(--ink-soft)}
+.card-approach.dentro p{color:#CFCABF}
+.card-approach ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.card-approach li{font-size:.82rem;font-weight:600;padding:6px 12px;border-radius:100px}
+.card-approach.dentro li{background:rgba(124,133,103,.18);color:#D8DCCB}
+.card-approach.fora li{background:var(--cream);color:var(--gold-deep)}
+.plus{
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Fraunces";font-size:2rem;color:var(--gold);
+}
+
+/* ---------- DOCTOR ---------- */
+.doctor{background:var(--cream)}
+.doctor-grid{display:grid;gap:30px;align-items:center;margin-top:8px}
+.doctor-media{position:relative;perspective:1000px}
+.tilt{
+  border-radius:var(--r);overflow:hidden;transform-style:preserve-3d;
+  transition:transform .4s var(--ease);box-shadow:0 40px 70px -40px rgba(33,29,26,.55);
+  border:1px solid var(--sand-line);
+}
+.tilt img{width:100%;height:auto;display:block}
+.doctor-media .badge{
+  position:absolute;left:16px;bottom:16px;background:rgba(247,243,236,.92);backdrop-filter:blur(6px);
+  border-radius:14px;padding:12px 16px;box-shadow:0 16px 30px -18px rgba(33,29,26,.6);
+  transform:translateZ(40px);
+}
+.doctor-media .badge b{display:block;font-family:"Fraunces";font-size:1.05rem;color:var(--ink)}
+.doctor-media .badge span{font-size:.76rem;color:var(--gold-deep);font-weight:700;letter-spacing:.04em}
+.doctor-copy h2{font-size:clamp(1.9rem,6.5vw,2.8rem);margin:14px 0 0}
+.doctor-copy p{color:var(--ink-soft);margin-top:16px}
+.quote{
+  margin-top:22px;padding-left:18px;border-left:2px solid var(--gold);
+  font-family:"Fraunces";font-style:italic;font-size:1.2rem;color:var(--ink);line-height:1.45;
+}
+
+/* ---------- TREATMENTS ---------- */
+.treat{background:var(--ivory)}
+.grid-t{display:grid;gap:14px;margin-top:38px;text-align:left}
+.t-card{
+  background:#fff;border:1px solid var(--sand-line);border-radius:var(--r);padding:26px 22px;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s;
+}
+.t-card:hover{transform:translateY(-4px);box-shadow:0 24px 44px -30px rgba(33,29,26,.5);border-color:var(--gold-soft)}
+.t-ico{
+  width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:16px;
+  background:linear-gradient(150deg,var(--cream),#fff);border:1px solid var(--sand-line);color:var(--gold-deep);
+}
+.t-ico svg{width:24px;height:24px}
+.t-card h3{font-size:1.28rem}
+.t-card p{font-size:.92rem;color:var(--ink-soft);margin-top:8px}
+
+/* ---------- RESULTS / SLIDER ---------- */
+.results{background:var(--espresso);color:var(--ivory)}
+.results .section-head p{color:#CBC3B7}
+.results .eyebrow{color:var(--gold-bright)}
+.results .eyebrow::before{background:var(--gold-bright)}
+.ba{
+  position:relative;max-width:460px;margin:38px auto 0;border-radius:var(--r);overflow:hidden;
+  aspect-ratio:589/1018;user-select:none;touch-action:pan-y;cursor:ew-resize;
+  box-shadow:0 50px 80px -40px rgba(0,0,0,.7);border:1px solid rgba(231,205,151,.2);
+}
+.ba-layer{
+  position:absolute;inset:0;background-image:url('espinha.jpeg');
+  background-size:200% 100%;background-repeat:no-repeat;
+}
+.ba-layer.antes{background-position:left center}
+.ba-layer.depois{background-position:right center;clip-path:inset(0 0 0 50%)}
+.ba .lab{
+  position:absolute;top:14px;z-index:4;font-size:.68rem;font-weight:800;letter-spacing:.18em;
+  padding:6px 12px;border-radius:100px;background:rgba(33,29,26,.6);backdrop-filter:blur(4px);color:var(--ivory);
+}
+.ba .lab.l{left:14px}
+.ba .lab.r{right:14px;color:var(--gold-bright)}
+.ba .divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold-bright);z-index:3;transform:translateX(-1px)}
+.ba .handle{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;
+  width:46px;height:46px;border-radius:50%;background:var(--gold-bright);
+  display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.4);color:#2A2012;
+}
+.ba .handle svg{width:22px;height:22px}
+.disc{text-align:center;margin-top:16px;font-size:.8rem;color:#A89E90}
+
+/* ---------- DIFFERENTIALS ---------- */
+.why{background:var(--cream)}
+.grid-w{display:grid;gap:14px;margin-top:38px}
+.w-card{display:flex;gap:16px;padding:22px;background:#fff;border:1px solid var(--sand-line);border-radius:16px}
+.w-num{font-family:"Fraunces";font-size:1.5rem;color:var(--gold);flex:0 0 auto;line-height:1}
+.w-card h3{font-size:1.14rem}
+.w-card p{font-size:.9rem;color:var(--ink-soft);margin-top:5px}
+
+/* ---------- CONTACT ---------- */
+.contact{background:var(--ivory)}
+.contact-grid{display:grid;gap:34px;margin-top:36px}
+.info-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--sand-line)}
+.info-item:last-child{border-bottom:none}
+.info-item .ii{width:42px;height:42px;border-radius:12px;background:var(--cream);display:grid;place-items:center;color:var(--gold-deep);flex:0 0 auto}
+.info-item .ii svg{width:20px;height:20px}
+.info-item b{display:block;font-family:"Fraunces";font-size:1.05rem}
+.info-item span,.info-item a{font-size:.92rem;color:var(--ink-soft)}
+.info-item a:hover{color:var(--gold-deep)}
+.socials{display:flex;gap:10px;margin-top:22px}
+.socials a{width:46px;height:46px;border-radius:12px;border:1px solid var(--sand-line);display:grid;place-items:center;color:var(--ink);transition:.3s}
+.socials a:hover{background:var(--espresso);color:var(--ivory);border-color:var(--espresso)}
+.socials a svg{width:20px;height:20px}
+
+.form{background:linear-gradient(165deg,#20251C,#2A2521);color:var(--ivory);border-radius:var(--r);padding:30px 24px}
+.form h3{font-size:1.5rem;color:var(--ivory)}
+.form p{color:#C7C0B4;font-size:.9rem;margin-top:6px}
+.field{margin-top:16px}
+.field label{display:block;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:7px}
+.field input,.field textarea{
+  width:100%;padding:13px 15px;border-radius:12px;border:1px solid rgba(231,205,151,.22);
+  background:rgba(255,255,255,.04);color:var(--ivory);font:inherit;font-size:.95rem;
+  transition:border-color .3s,background .3s;
+}
+.field input::placeholder,.field textarea::placeholder{color:#8E877B}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold-bright);background:rgba(255,255,255,.07)}
+.field textarea{resize:vertical;min-height:92px}
+.form .btn{width:100%;margin-top:20px}
+.form-note{font-size:.74rem;color:#9A9184;margin-top:12px;text-align:center}
+
+/* ---------- FOOTER ---------- */
+.foot{background:var(--espresso);color:#C7C0B4;padding:56px 0 30px}
+.foot-top{display:grid;gap:30px;padding-bottom:34px;border-bottom:1px solid rgba(231,205,151,.12)}
+.foot-logo{height:64px;width:auto;margin-bottom:16px}
+.foot p{font-size:.9rem;max-width:36ch}
+.foot-nav{display:flex;flex-wrap:wrap;gap:18px}
+.foot-nav a{font-size:.9rem;color:#C7C0B4;transition:.3s}
+.foot-nav a:hover{color:var(--gold-bright)}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:24px;font-size:.78rem;color:#8E877B}
+.foot-bottom a{color:var(--gold-soft)}
+
+/* ---------- FLOATING WHATSAPP ---------- */
+.wa-float{
+  position:fixed;right:16px;bottom:16px;z-index:50;width:56px;height:56px;border-radius:50%;
+  background:#25D366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6);
+  transform:translateY(90px);transition:transform .5s var(--ease);
+}
+.wa-float.show{transform:none}
+.wa-float:hover{transform:scale(1.06)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* ---------- RESPONSIVE ---------- */
+@media(min-width:680px){
+  .split{grid-template-columns:1fr auto 1fr;align-items:stretch}
+  .plus{padding:0 4px}
+  .grid-t{grid-template-columns:1fr 1fr}
+  .grid-w{grid-template-columns:1fr 1fr}
+}
+@media(min-width:900px){
+  .wrap{padding:0 40px}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.9rem;font-weight:600;color:var(--ivory);position:relative;transition:color .3s}
+  .nav.scrolled .nav-links a{color:var(--ink)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1.5px;background:var(--gold);transition:width .3s var(--ease)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:inline-flex}
+  .burger,.drawer{display:none}
+  .brand .name{display:block}
+  .section{padding:104px 0}
+  .doctor-grid{grid-template-columns:1fr 1fr;gap:56px}
+  .grid-t{grid-template-columns:1fr 1fr 1fr}
+  .contact-grid{grid-template-columns:1fr 1fr;align-items:start}
+  .foot-top{grid-template-columns:1.4fr 1fr}
+  .hero .lede{font-size:1.15rem}
+}
+@media(max-width:899px){ .brand .name{display:none} }
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .hero-logo,.hero .an,.scrollcue{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Clínica Rimcha — início">
+      <img class="logo-w" src="logo.jpeg" alt="Clínica Rimcha" />
+      <img class="logo-g" src="logo-gold.jpeg" alt="Clínica Rimcha" />
+    </a>
+    <div class="nav-links">
+      <a href="#abordagem">Abordagem</a>
+      <a href="#medico">A clínica</a>
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <a class="btn nav-cta" href="#contato">Agendar avaliação</a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+  <a href="#abordagem"><span>01</span>Abordagem</a>
+  <a href="#medico"><span>02</span>A clínica</a>
+  <a href="#tratamentos"><span>03</span>Tratamentos</a>
+  <a href="#resultados"><span>04</span>Resultados</a>
+  <a href="#contato"><span>05</span>Contato</a>
+  <a class="btn drawer-cta" href="#contato">Agendar pelo WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="beams">
+    <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <img class="hero-logo" src="logo.jpeg" alt="Clínica Rimcha — Estética Integrativa e Endocrinologia" />
+    <div class="chip an"><span class="dot"></span>Jardim São Paulo · São Paulo</div>
+    <h1 class="an">Beleza que começa <em>por dentro</em>.</h1>
+    <p class="lede an">Estética e endocrinologia no mesmo cuidado. Tratamos a sua pele e o seu equilíbrio hormonal juntos — porque resultado que dura vem de dentro para fora.</p>
+    <div class="actions an">
+      <a class="btn" href="#contato">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M4 6h16a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/></svg>
+        Agendar avaliação
+      </a>
+      <a class="btn ghost" href="#resultados">Ver resultados</a>
+    </div>
+  </div>
+  <div class="scrollcue"><span>Role</span><span class="line"></span></div>
+</header>
+
+<!-- APPROACH -->
+<section class="section approach center" id="abordagem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">Nossa abordagem</span>
+      <h2>Estética e endocrinologia, <em>no mesmo lugar</em></h2>
+      <p>A pele reflete o que acontece dentro do corpo. Por isso unimos o cuidado estético ao olhar do endocrinologista — buscando a causa, não só o sintoma.</p>
+    </div>
+    <div class="split">
+      <div class="card-approach dentro reveal d1">
+        <span class="tag">Por dentro</span>
+        <h3>Endocrinologia</h3>
+        <p>Investigamos hormônios, metabolismo e o que sustenta o seu bem-estar. O equilíbrio interno é a base de qualquer resultado duradouro.</p>
+        <ul><li>Hormônios</li><li>Tireoide</li><li>Metabolismo</li><li>Emagrecimento</li><li>Energia</li></ul>
+      </div>
+      <div class="plus" aria-hidden="true">+</div>
+      <div class="card-approach fora reveal d2">
+        <span class="tag">Por fora</span>
+        <h3>Estética</h3>
+        <p>Protocolos faciais personalizados para tratar acne, marcas e sinais do tempo — devolvendo viço, textura e uniformidade à sua pele.</p>
+        <ul><li>Acne</li><li>Rejuvenescimento</li><li>Manchas</li><li>Viço</li><li>Skincare</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR / CLINIC -->
+<section class="section doctor" id="medico">
+  <div class="wrap doctor-grid">
+    <div class="doctor-media reveal">
+      <div class="tilt" id="tilt">
+        <img src="doutor.jpeg" alt="Consultório da Clínica Rimcha no Jardim São Paulo" />
+      </div>
+      <div class="badge"><b>Dr. Nome Sobrenome</b><span>Endocrinologia · CRM 000000</span></div>
+    </div>
+    <div class="doctor-copy reveal d1">
+      <span class="eyebrow">Quem cuida de você</span>
+      <h2>Um cuidado que enxerga você por inteiro</h2>
+      <p>Na Clínica Rimcha, cada avaliação começa por entender o seu contexto — rotina, hormônios, histórico e objetivos. A partir daí, montamos um plano que une ciência e estética, com acompanhamento próximo em cada etapa.</p>
+      <p class="quote">“Tratar a pele sem olhar para o corpo é resolver metade do problema.”</p>
+      <div class="actions" style="margin-top:24px">
+        <a class="btn dark" href="#contato">Marcar minha avaliação</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section class="section treat center" id="tratamentos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">O que tratamos</span>
+      <h2>Tratamentos <em>personalizados</em></h2>
+      <p>Protocolos definidos após a sua avaliação — nada de fórmula pronta. Estes são alguns dos cuidados que oferecemos.</p>
+    </div>
+    <div class="grid-t">
+      <div class="t-card reveal d1">
+        <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.3" fill="currentColor" stroke="none"/><circle cx="14" cy="9" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Tratamento de acne</h3>
+        <p>Controle da acne ativa e das marcas deixadas por ela, com protocolos que respeitam o seu tipo de pele.</p>
+      </div>
+      <div class="t-card reveal d2">
+        <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.2 4.6L19 8l-3.5 3.4.8 5-4.3-2.4L7.7 16.4l.8-5L5 8l4.8-.4L12 3Z"/></svg></div>
+        <h3>Rejuvenescimento facial</h3>
+        <p>Estímulo de colágeno e cuidado com os primeiros sinais do tempo, para uma pele firme e com viço.</p>
+      </div>
+      <div class="t-card reveal d3">
+        <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14c0-4 3.6-8 8-8s8 4 8 8"/><path d="M8 14a4 4 0 0 1 8 0"/><path d="M4 14h16"/></svg></div>
+        <h3>Saúde e viço da pele</h3>
+        <p>Rotina de skincare orientada e procedimentos de hidratação e uniformização do tom.</p>
+      </div>
+      <div class="t-card reveal d1">
+        <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3v6a3 3 0 0 0 6 0V3"/><path d="M7 21c0-4 2.2-7 5-7s5 3 5 7"/></svg></div>
+        <h3>Manejo hormonal</h3>
+        <p>Avaliação e acompanhamento de alterações hormonais que impactam pele, peso e disposição.</p>
+      </div>
+      <div class="t-card reveal d2">
+        <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c5-3 8-6.5 8-11a5 5 0 0 0-9-3 5 5 0 0 0-7 4c0 4.5 3 7.5 8 10Z" opacity=".3"/><path d="M4 12h4l2-4 3 8 2-4h5"/></svg></div>
+        <h3>Emagrecimento & metabolismo</h3>
+        <p>Estratégias médicas para emagrecimento saudável, com foco no funcionamento do seu metabolismo.</p>
+      </div>
+      <div class="t-card reveal d3">
+        <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></div>
+        <h3>Bem-estar & vitalidade</h3>
+        <p>Acompanhamento integrativo para energia, sono e qualidade de vida no dia a dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section results center" id="resultados">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">Resultado real</span>
+      <h2>Tratamento de <em>acne</em></h2>
+      <p>Arraste para comparar. Evolução de uma paciente da Clínica Rimcha ao longo do tratamento.</p>
+    </div>
+    <div class="ba reveal d1" id="ba" role="group" aria-label="Comparação antes e depois">
+      <div class="ba-layer antes"></div>
+      <div class="ba-layer depois"></div>
+      <span class="lab l">ANTES</span>
+      <span class="lab r">DEPOIS</span>
+      <div class="divider"></div>
+      <div class="handle" id="ba-handle" tabindex="0" role="slider"
+           aria-label="Arraste para comparar antes e depois" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l-4 6 4 6M15 6l4 6-4 6"/></svg>
+      </div>
+    </div>
+    <p class="disc reveal">Resultados variam de pessoa para pessoa e dependem da avaliação individual.</p>
+  </div>
+</section>
+
+<!-- DIFFERENTIALS -->
+<section class="section why center" id="diferenciais">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">Por que a Rimcha</span>
+      <h2>O cuidado que <em>faz diferença</em></h2>
+    </div>
+    <div class="grid-w" style="text-align:left">
+      <div class="w-card reveal d1"><div class="w-num">01</div><div><h3>Abordagem integrativa</h3><p>Estética e endocrinologia trabalhando juntas, tratando a origem e não apenas a aparência.</p></div></div>
+      <div class="w-card reveal d2"><div class="w-num">02</div><div><h3>Atendimento individualizado</h3><p>Cada plano é montado para você, com tempo e escuta em cada consulta.</p></div></div>
+      <div class="w-card reveal d3"><div class="w-num">03</div><div><h3>Base científica</h3><p>Condutas atualizadas e seguras, guiadas por evidência e acompanhamento próximo.</p></div></div>
+      <div class="w-card reveal d4"><div class="w-num">04</div><div><h3>Ambiente acolhedor</h3><p>Um espaço tranquilo e confortável no Jardim São Paulo para você se sentir bem.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contato">
+  <div class="wrap">
+    <div class="section-head reveal center" style="margin:0 auto">
+      <span class="eyebrow center">Vamos conversar</span>
+      <h2>Agende sua <em>avaliação</em></h2>
+      <p>Fale com a gente pelo WhatsApp ou deixe seus dados — retornamos para marcar o melhor horário.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal d1">
+        <div class="info-item">
+          <div class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><b>Onde estamos</b><span>Jardim São Paulo, São Paulo · SP<br>Rua Exemplo, 000 — completar endereço</span></div>
+        </div>
+        <div class="info-item">
+          <div class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><b>Horário</b><span>Seg a Sex · 09h às 19h<br>Sáb · 09h às 13h</span></div>
+        </div>
+        <div class="info-item">
+          <div class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5l8 6 8-6M4 5h16v14H4V5Z"/></svg></div>
+          <div><b>WhatsApp</b><a href="https://wa.me/5511999999999" target="_blank" rel="noopener">(11) 99999-9999</a></div>
+        </div>
+        <div class="socials">
+          <a href="https://instagram.com/clinicarimcha" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+Rimcha+Jardim+S%C3%A3o+Paulo" target="_blank" rel="noopener" aria-label="Ver no mapa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="form reveal d2">
+        <h3>Deixe seu contato</h3>
+        <p>Preencha e envie direto pelo WhatsApp — é rapidinho.</p>
+        <div class="field"><label for="n">Nome</label><input id="n" type="text" placeholder="Seu nome" /></div>
+        <div class="field"><label for="t">Telefone / WhatsApp</label><input id="t" type="tel" placeholder="(11) 90000-0000" /></div>
+        <div class="field"><label for="m">Como podemos ajudar?</label><textarea id="m" placeholder="Conte um pouco sobre o que você busca..."></textarea></div>
+        <button class="btn" id="send" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.2 1.1-1.7 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.1 2.1 1.3.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.9-.1 1.5Z"/></svg>
+          Enviar pelo WhatsApp
+        </button>
+        <p class="form-note">Ao enviar, abrimos o WhatsApp com sua mensagem pronta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <img class="foot-logo" src="logo.jpeg" alt="Clínica Rimcha" />
+        <p>Estética integrativa e endocrinologia no Jardim São Paulo. Cuidado que começa por dentro e aparece por fora.</p>
+      </div>
+      <div>
+        <nav class="foot-nav">
+          <a href="#abordagem">Abordagem</a>
+          <a href="#medico">A clínica</a>
+          <a href="#tratamentos">Tratamentos</a>
+          <a href="#resultados">Resultados</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Clínica Rimcha · Todos os direitos reservados</span>
+      <span>Estética Integrativa e Endocrinologia</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="wa-float" id="wa" href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Rimcha." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.2 1.1-1.7 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.1 2.1 1.3.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.9-.1 1.5Z"/></svg>
+</a>
+
+<script>
+/* ---- CONFIG (troque pelos dados reais) ---- */
+const WHATS = "5511999999999"; // DDI+DDD+número, só dígitos
+
+/* year */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* nav scroll state + floating wa */
+const nav = document.getElementById('nav');
+const wa = document.getElementById('wa');
+const onScroll = () => {
+  const s = window.scrollY > 40;
+  nav.classList.toggle('scrolled', s);
+  wa.classList.toggle('show', window.scrollY > 400);
+};
+onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+/* mobile drawer */
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+const toggle = (open) => {
+  const o = open ?? !drawer.classList.contains('open');
+  drawer.classList.toggle('open', o);
+  burger.setAttribute('aria-expanded', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+};
+burger.addEventListener('click', () => toggle());
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggle(false)));
+
+/* reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+}, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* reduced motion guard */
+const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const touch = window.matchMedia('(pointer: coarse)').matches;
+
+/* tilt on doctor image (desktop only) */
+const tilt = document.getElementById('tilt');
+if(tilt && !RM && !touch){
+  const media = tilt.parentElement;
+  media.addEventListener('pointermove', (e) => {
+    const r = media.getBoundingClientRect();
+    const px = (e.clientX - r.left)/r.width - .5;
+    const py = (e.clientY - r.top)/r.height - .5;
+    tilt.style.transform = `rotateY(${px*7}deg) rotateX(${-py*7}deg)`;
+  });
+  media.addEventListener('pointerleave', () => { tilt.style.transform = ''; });
+}
+
+/* magnetic buttons (desktop only) */
+if(!RM && !touch){
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('pointermove', (e) => {
+      const r = btn.getBoundingClientRect();
+      btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.22}px, ${(e.clientY-r.top-r.height/2)*.30}px)`;
+    });
+    btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
+  });
+}
+
+/* before/after slider (single espinha.jpeg, split em duas metades) */
+(function(){
+  const ba = document.getElementById('ba');
+  if(!ba) return;
+  const depois = ba.querySelector('.ba-layer.depois');
+  const div = ba.querySelector('.divider');
+  const handle = document.getElementById('ba-handle');
+  let dragging = false, pos = 50;
+  const apply = (p) => {
+    pos = Math.max(2, Math.min(98, p));
+    depois.style.clipPath = `inset(0 0 0 ${pos}%)`;
+    div.style.left = pos + '%';
+    handle.style.left = pos + '%';
+    handle.setAttribute('aria-valuenow', Math.round(pos));
+  };
+  const fromX = (clientX) => {
+    const r = ba.getBoundingClientRect();
+    apply(((clientX - r.left) / r.width) * 100);
+  };
+  ba.addEventListener('pointerdown', (e)=>{ dragging=true; ba.setPointerCapture(e.pointerId); fromX(e.clientX); });
+  ba.addEventListener('pointermove', (e)=>{ if(dragging) fromX(e.clientX); });
+  ba.addEventListener('pointerup',   ()=> dragging=false);
+  ba.addEventListener('pointercancel',()=> dragging=false);
+  handle.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowLeft'){ apply(pos-4); e.preventDefault(); }
+    else if(e.key==='ArrowRight'){ apply(pos+4); e.preventDefault(); }
+  });
+})();
+
+/* contact form -> WhatsApp */
+document.getElementById('send').addEventListener('click', () => {
+  const n = document.getElementById('n').value.trim();
+  const t = document.getElementById('t').value.trim();
+  const m = document.getElementById('m').value.trim();
+  let msg = "Olá! Vim pelo site da Clínica Rimcha.";
+  if(n) msg += `\n\nNome: ${n}`;
+  if(t) msg += `\nTelefone: ${t}`;
+  if(m) msg += `\n\n${m}`;
+  window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank');
+});
+</script>
+</body>
+</html>

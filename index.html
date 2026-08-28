@@ -160,16 +160,18 @@ p{margin:0}
   content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(120% 90% at 70% 20%,transparent 40%,rgba(0,0,0,.45) 100%);
 }
-.hero-inner{position:relative;z-index:2;width:100%}
-.hero-logo{height:clamp(140px,32vw,210px);width:auto;margin-bottom:32px;opacity:0;
-  filter:drop-shadow(0 10px 34px rgba(0,0,0,.45));animation:rise .9s var(--ease) .1s forwards}
+
+/* hero em duas colunas: texto | imagem */
+.hero-inner{position:relative;z-index:2;width:100%;display:grid;gap:34px;align-items:center}
+.hero-copy{min-width:0}
+
 .hero h1{
   font-size:clamp(2.6rem,10.5vw,4.6rem);font-weight:300;letter-spacing:-.02em;
   max-width:16ch;
 }
 .hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:400}
 .hero .lede{
-  margin-top:22px;max-width:40ch;color:#E9E0D2;font-size:1.06rem;line-height:1.6;
+  margin-top:22px;max-width:42ch;color:#E9E0D2;font-size:1.06rem;line-height:1.6;
 }
 .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .chip{
@@ -180,12 +182,22 @@ p{margin:0}
 }
 .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 3px rgba(216,176,99,.25)}
 
+/* coluna da imagem/logo */
+.hero-media{
+  position:relative;justify-self:center;width:100%;max-width:380px;
+  border-radius:22px;overflow:hidden;
+  border:1px solid rgba(231,205,151,.22);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.7);
+}
+.hero-media img{width:100%;height:auto;display:block}
+
 /* hero entrance stagger */
 .hero .an{opacity:0;animation:rise .9s var(--ease) forwards}
 .hero .chip.an{animation-delay:.25s}
 .hero h1.an{animation-delay:.38s}
 .hero .lede.an{animation-delay:.52s}
 .hero .actions.an{animation-delay:.66s}
+.hero .hero-media.an{animation-delay:.5s}
 .scrollcue{
   position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;
   display:flex;flex-direction:column;align-items:center;gap:7px;opacity:0;animation:rise 1s var(--ease) 1s forwards;
@@ -383,6 +395,8 @@ p{margin:0}
   .burger,.drawer{display:none}
   .brand .name{display:block}
   .section{padding:104px 0}
+  .hero-inner{grid-template-columns:1.05fr .95fr;gap:56px}
+  .hero-media{max-width:440px;justify-self:end}
   .doctor-grid{grid-template-columns:1fr 1fr;gap:56px}
   .grid-t{grid-template-columns:1fr 1fr 1fr}
   .contact-grid{grid-template-columns:1fr 1fr;align-items:start}
@@ -394,7 +408,7 @@ p{margin:0}
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
-  .hero-logo,.hero .an,.scrollcue{opacity:1}
+  .hero .an,.scrollcue{opacity:1}
 }
 </style>
 </head>
@@ -437,16 +451,23 @@ p{margin:0}
     <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div>
   </div>
   <div class="wrap hero-inner">
-    <img class="hero-logo" src="logo.jpeg" alt="Clínica Rimcha — Estética Integrativa e Endocrinologia" />
-    <div class="chip an"><span class="dot"></span>Jardim São Paulo · São Paulo</div>
-    <h1 class="an">Beleza que começa <em>por dentro</em>.</h1>
-    <p class="lede an">Estética e endocrinologia no mesmo cuidado. Tratamos a sua pele e o seu equilíbrio hormonal juntos — porque resultado que dura vem de dentro para fora.</p>
-    <div class="actions an">
-      <a class="btn" href="#contato">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M4 6h16a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/></svg>
-        Agendar avaliação
-      </a>
-      <a class="btn ghost" href="#resultados">Ver resultados</a>
+    <!-- COLUNA DO TEXTO -->
+    <div class="hero-copy">
+      <div class="chip an"><span class="dot"></span>Jardim São Paulo · São Paulo</div>
+      <h1 class="an">Beleza que começa <em>por dentro</em>.</h1>
+      <p class="lede an">Estética e endocrinologia no mesmo cuidado. Tratamos a sua pele e o seu equilíbrio hormonal juntos — porque resultado que dura vem de dentro para fora.</p>
+      <div class="actions an">
+        <a class="btn" href="#contato">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3 9h18M4 6h16a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/></svg>
+          Agendar avaliação
+        </a>
+        <a class="btn ghost" href="#resultados">Ver resultados</a>
+      </div>
+    </div>
+
+    <!-- COLUNA DA IMAGEM  (troque logo.jpeg por uma foto: src="foto-clinica.jpeg") -->
+    <div class="hero-media an">
+      <img src="logo.jpeg" alt="Clínica Rimcha — Estética Integrativa e Endocrinologia" />
     </div>
   </div>
   <div class="scrollcue"><span>Role</span><span class="line"></span></div>
